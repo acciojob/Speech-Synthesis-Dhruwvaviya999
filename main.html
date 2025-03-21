@@ -46,7 +46,11 @@
 	  msg.pitch = options[1].value;	
 	  msg.lang = voicesDropdown.value;
 	  console.log(msg.lang);
-	  // window.speechSynthesis.speak(msg);
+	  window.speechSynthesis.speak(msg);
+  });
+
+  stopButton.addEventListener("click", () => {
+	 window.speechSynthesis.cancel(msg);
   });
 	
   //Your code goes here
