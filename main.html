@@ -13,7 +13,10 @@
       <h1>The Voiceinator 5000</h1>
 
       <select name="voice" id="voices">
-        <option value="">Select A Voice</option>
+        <option value="Select A Voice">Select A Voice</option>
+        <option value="fr-FR">French</option>
+        <option value="en-US">English</option>
+        <option value="hi-IN">Hindi</option>
       </select>
 
       <label for="rate">Rate:</label>
@@ -29,13 +32,23 @@
     </div>
 
 <script>
-  const msg = new SpeechSynthesisUtterance();
   let voices = [];
   const voicesDropdown = document.querySelector('[name="voice"]');
   const options = document.querySelectorAll('[type="range"], [name="text"]');
   const speakButton = document.querySelector('#speak');
   const stopButton = document.querySelector('#stop');
 
+  const text = options[2].value;
+  const msg = new SpeechSynthesisUtterance(text);
+
+  speakButton.addEventListener(("click"), () => {
+	  msg.rate = options[0].value;
+	  msg.pitch = options[1].value;	
+	  msg.lang = voicesDropdown.value;
+	  console.log(msg.lang);
+	  // window.speechSynthesis.speak(msg);
+  });
+	
   //Your code goes here
 </script>
 
